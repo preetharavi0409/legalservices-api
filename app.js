@@ -3,8 +3,7 @@ let express = require('express'),
   path = require('path'),
   mongoose = require('mongoose'),
   cors = require('cors'),
-  bodyParser = require('body-parser'),
-  dataBaseConfig = require('./database/db');
+  bodyParser = require('body-parser');
 const { envconfig } = require('dotenv').config();
 
 
@@ -42,11 +41,11 @@ app.use('/api/case', caseRoute)
 app.use('/api/user', userRoute)
 
 // PORT
-const port = process.env.PORT; //|| 8000;
+/*const port = process.env.PORT; //|| 8000;
 
 app.listen(port, () => {
   console.log('Connected to port ' + port);
-})
+}) */
 
 // Find 404 and hand over to error handler
 app.use((req, res, next) => {
@@ -70,3 +69,5 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
+
+module.exports=app;
